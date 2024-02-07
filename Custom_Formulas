@@ -1,0 +1,4 @@
+Compare_Ranges =
+LAMBDA(range1, range2,
+    ( CONCAT(range1) = CONCAT(range2) )
+)
