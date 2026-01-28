@@ -2,3 +2,11 @@ Compare_Ranges =
 LAMBDA(range1, range2,
     ( CONCAT(range1) = CONCAT(range2) )
 )
+
+Generate_String =
+LAMBDA( _val, [start_encl], [end_encl]
+    , LET(     _start_encl, IFS(ISOMITTED(start_encl), CHAR(34), start_encl = "", CHAR(34), TRUE, start_encl)
+            ,  _end_encl, IFS(ISOMITTED(end_encl), _start_encl, end_encl = "", _start_encl, TRUE, end_encl)
+            ,  _start_encl & TEXTJOIN(_end_encl & ", " & _start_encl, TRUE, _val) & _end_encl
+    )
+)
